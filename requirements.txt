@@ -1,0 +1,9 @@
+pandas
+numpi
+ijson
+flask
+flask_JWT
+flask_restful
+werkzeug
+Flask-SQLAlchemy
+flask_swagger_ui
