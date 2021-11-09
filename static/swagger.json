@@ -1,0 +1,189 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Donald's Cake API",
+    "description": "This is a for job application. You can filter the API output or input using this tool.",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "donald.besong.principles@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    },
+    "version": "1.0.0"
+  },
+  "externalDocs": {
+    "description": "Link to my personal website",
+    "url": "https://besong-biography.s3.eu-west-2.amazonaws.com/templates_FOR_S3/index.html"
+  },
+  "servers": [
+    {
+      "url": "/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "cakes",
+      "description": "Add or view cakes"
+    }
+  ],
+  "paths": {
+    "/cakes": {
+      "get": {
+        "tags": [
+          "List all cakes"
+        ],
+        "summary": "Gets a list of Donald's cakes",
+        "responses": {
+          "200": {
+            "description": "OK.  Please refer to external pages for other responses."
+          }
+        }
+      }
+        
+     },
+
+     "/cake/{name}": {
+      "get": {
+        "tags": [
+          "Get one cake by name"
+        ],
+        "summary": "Pick a cake from Donald's cakes",
+        "parameters":
+          [{"name": "name", 
+          "schema": {
+          "$ref": "#/components/schemas/cake"
+          },
+          "required":true,
+           "in": "path",
+           "description": "name of cake to return"
+          }],
+        "responses": {
+          "200": {
+            "description": "OK. Please refer texternal pages for other responses."
+          }
+        }
+      }
+        
+    },
+
+    "/cake/{name2}": {
+      "delete": {
+        "tags": [
+          "Delete a cake by name"
+        ],
+        "summary": "Nick a cake from Donald's cakes",
+        "parameters":
+          [{"name": "name2", 
+          "schema": {
+          "$ref": "#/components/schemas/cake"
+          },
+          "required":true,
+           "in": "path",
+           "description": "name of cake to return"
+          }],
+        "responses": {
+          "200": {
+            "description": "OK. Please refer toexternal pages for other responses."
+          }
+        }
+      }
+        
+    },
+    
+    "/cake/{name1}": {
+      "post": {
+        "tags": [
+          "Get one cake by name"
+        ],
+        "summary": "Pick a cake from Donald's cakes",
+        "parameters":
+          [{"name": "name1", 
+          "schema": {
+          "$ref": "#/components/schemas/cake"
+          },
+          "required":true,
+           "in": "path",
+           "description": "name of new cake"
+          },
+          {"name": "price", 
+            "schema": {
+            "$ref": "#/components/schemas/price"
+            },
+            "required":true,
+             "in": "query",
+             "description": "price of new cake"
+            },
+            {"name": "yum_factor", 
+              "schema": {
+              "$ref": "#/components/schemas/yum_factor"
+              },
+              "required":true,
+               "in": "query",
+               "description": "just how good is my new cake?"
+              },
+              {"name": "comment", 
+                "schema": {
+                "$ref": "#/components/schemas/comment"
+                },
+                "required":true,
+                 "in": "query",
+                 "description": "whatever you say about my cake is welcome"
+                }
+        ],
+          
+        "responses": {
+          "201": {
+            "description": "Cake added successfully. Please refer to external pages for other responses."
+          }
+        }
+      }
+        
+    }
+  },
+  "components": {
+    "schemas": {
+      "cake": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+
+        }
+      },
+
+      "price": {
+        "properties": {
+          "name": {
+            "type": "number"
+          }
+
+        }
+      },
+
+      "yum_factor": {
+        "properties": {
+          "name": {
+            "type": "number"
+          }
+
+        }
+      },
+
+      "comment": {
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+
+        }
+      }  
+    }
+  }
+}
+
+
+
+  
+
