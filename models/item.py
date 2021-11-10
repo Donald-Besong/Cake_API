@@ -12,11 +12,15 @@ class ItemModel(db.Model):
     yum_factor = db.Column(db.Float(precision=2))
 
     def __init__(self, name, price, comment, imgUrl, yum_factor):
+        assert(len(name) <= 30)
+        assert(len(comment) <= 200)
+        assert(yum_factor >= 1 and yum_factor <= 5)
         self.name = name
-        self.price = price
+        self.price = price        
         self.comment = comment
-        self.imgUrl = imgUrl
+        self.imgUrl = imgUrl        
         self.yum_factor = yum_factor
+        
 
     def json(self):
         return {'name': self.name, 'price': self.price, 'comment': self.comment, 'yum factor': self.yum_factor}

@@ -27,13 +27,14 @@ class Item(Resource):
         return {'message': 'Item not found'}, 404
 
     def post(self, name):
+
         if ItemModel.find_by_name(name):
             return {'message': "An item with name '{}' already exists.".format(name)}, 400
 
         data = Item.parser.parse_args()
 
         item = ItemModel(name, **data)
-
+        
         try:
             item.save_to_db()
         except:

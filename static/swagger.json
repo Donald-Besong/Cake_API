@@ -105,7 +105,7 @@
           },
           "required":true,
            "in": "path",
-           "description": "name of new cake"
+           "description": "name of new cake, 30 characters maximum"
           },
           {"name": "price", 
             "schema": {
@@ -121,7 +121,7 @@
               },
               "required":true,
                "in": "query",
-               "description": "just how good is my new cake?"
+               "description": "From 1 to 5 inclusive, rate your cake?"
               },
               {"name": "comment", 
                 "schema": {
@@ -129,7 +129,7 @@
                 },
                 "required":true,
                  "in": "query",
-                 "description": "whatever you say about my cake is welcome"
+                 "description": "Your comments, 200 characters maximum"
                 }
         ],
           
@@ -165,7 +165,10 @@
       "yum_factor": {
         "properties": {
           "name": {
-            "type": "number"
+            "type": "number",
+            "maximum": 5,
+            "minimum": 0,
+            "description": "Must be between 1 and 5 inclusive"
           }
 
         }
