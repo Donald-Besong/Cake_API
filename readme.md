@@ -33,12 +33,19 @@ Instructions
   
 2. cd base directory that contains app.py
    
-3. install pythopn packages using pip.requirements.txt is in this 
+3. Create an envirnment:  python3 -m venv CakeEnv3
+
+4. Activate the environment: . CakeEnv3/bin/activate
+
+5. install pythopn packages using pip.requirements.txt is in this 
    folder
-4. If using ubuntu:
+   
+6. If using ubuntu:
 export FLASK_APP=app.py
 export FLASK_DEBUG=1
 export FLASK_ENV=development
 
-5. On your browser load 127.0.0.0.1/swagger
-6. On the swagger website make use of the documentation and HTTP verbs
+7. flask run
+
+8. On your browser load 127.0.0.1:5000/swagger
+9. On the swagger website make use of the documentation and HTTP verbs

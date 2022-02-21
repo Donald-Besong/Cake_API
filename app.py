@@ -5,10 +5,11 @@ from flask_jwt import JWT
 from security import authenticate, identity
 from resources.user import UserRegister
 from resources.item import Item, ItemList
+from flask_swagger_ui import get_swaggerui_blueprint
 
 app = Flask(__name__)
 #********** begin sawgger****************************
-from flask_swagger_ui import get_swaggerui_blueprint
+
 SWAGGER_URL = '/swagger'
 API_URL = '/static/swagger.json'
 swagger_blueprint = get_swaggerui_blueprint(
@@ -17,9 +18,9 @@ swagger_blueprint = get_swaggerui_blueprint(
         config={"app_name": "Api_from_Donald"}
         )
 
-@app.route('/static/<path:path>')
-def send_static(path):
-    return send_from_directory('static', path)
+#@app.route('/static/<path:path>')
+#def send_static(path):
+#    return send_from_directory('static', path)
     
 app.register_blueprint(swagger_blueprint, url_prefix=SWAGGER_URL)
 #********** end sawgger******************************
@@ -31,14 +32,12 @@ app.config['PROPAGATE_EXCEPTIONS'] = True
 app.secret_key = 'don'
 api = Api(app)
 
-
 #@app.before_first_request
 #def create_tables():
 #    db.create_all()
 
-
-jwt = JWT(app, authenticate, identity)  # /auth
-
+jwt = JWT(app, authenticate, identity)  # /auth #this is used by any
+                            #function decorated with @jwt_required
 
 api.add_resource(Item, '/cake/<string:name>')
 api.add_resource(ItemList, '/cakes')
